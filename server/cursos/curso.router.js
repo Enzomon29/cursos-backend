@@ -28,4 +28,10 @@ router.put(
    controller.actualizarCurso
 )
 
+router.get(
+   '/:id',
+   validateId,
+   controller.obtenerCurso
+)
+
 module.exports = router

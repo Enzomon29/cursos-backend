@@ -5,5 +5,6 @@ module.exports = (req,res,next) => {
    if(isNaN(id) || id < 1) {
       return response(res,400,'Formato de ID inválido')
    }
+   req.params.id = id
    return next()
 }
