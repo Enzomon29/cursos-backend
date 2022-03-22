@@ -5,7 +5,8 @@ const controller = require('./curso.controller')
 const schemas = require('./schemas')
 const {
    validateQuery,
-   validateBody
+   validateBody,
+   validateId
 } = require('../../middlewares')
 
 router.post(
@@ -18,6 +19,13 @@ router.get(
    '/',
    validateQuery(schemas.obtenerCursos),
    controller.obtenerCursos
+)
+
+router.put(
+   '/:id',
+   validateId,
+   validateBody(schemas.actualizarCurso),
+   controller.actualizarCurso
 )
 
 module.exports = router

@@ -21,3 +21,13 @@ exports.obtenerCursos = async (req,res) => {
    }
    return response(res,200,ans)
 }
+
+exports.actualizarCurso = async (req,res) => {
+   const id = req.params.id
+   const payload = req.body
+   const ans = await Services.actualizarCurso(id,payload)
+   if(ans.error) {
+      return response(res,ans.error.code,ans.error.message)
+   }
+   return response(res,200,ans)
+}

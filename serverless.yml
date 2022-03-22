@@ -43,7 +43,6 @@ functions:
               cors:
                  origin: '*'
 
-
 layers:
    Api:
       path: layers/api-layer

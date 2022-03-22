@@ -18,5 +18,21 @@ module.exports = {
          type: "timestamp",
          default: () => "CURRENT_TIMESTAMP",
       },
+      activo: {
+         type: "boolean",
+         default: false
+      },
+      calificacion: {
+         type: "float",
+         default: 0.0
+      },
+      precio: {
+         type: "float",
+         default: 0.0
+      },
+      ramo: {
+         type: "varchar",
+         nullable: true
+      }
    }
 }
