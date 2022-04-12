@@ -1,4 +1,4 @@
-const { response } = require('../helpers')
+const { response } = require('../utils')
 
 module.exports = (req,res,next) => {
    const id = Number(req.params.id)

@@ -7,7 +7,7 @@ const {
    validateQuery,
    validateBody,
    validateId
-} = require('../../middlewares')
+} = require('../commons/middlewares')
 
 router.post(
    '/',

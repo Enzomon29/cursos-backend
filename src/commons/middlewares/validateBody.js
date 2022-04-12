@@ -1,15 +1,14 @@
-const { response } = require('../helpers')
+const { response } = require('../utils')
 
 module.exports = schema => (req,res,next) => {
-   const { error } = schema.validate(req.query,{
-      stripUnknown: false,
+   const { error, value } = schema.validate(req.body,{
+      stripUnknown: true,
       allowUnknown: false,
-      abortEarly: true
+      abortEarly: false
    })
-
    if(error) {
       return response(res,400,error.details[0].message)
    }
-
+   req.body = value
    return next()
 }

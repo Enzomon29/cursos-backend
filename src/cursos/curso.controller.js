@@ -1,4 +1,4 @@
-const { response } = require('../../helpers')
+const { response } = require('../commons/utils')
 const Services = require('./services')
 
 exports.crearCurso = async (req,res) => {
