@@ -1,3 +1,4 @@
 module.exports = {
-   CursoEntity: "Curso"
+   CursoEntity: "Curso",
+   UsuarioEntity: "Usuario"
 }
