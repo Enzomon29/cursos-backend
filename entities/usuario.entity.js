@@ -14,7 +14,19 @@ module.exports = {
          type: "varchar",
          nullable: false
       },
+      documento: {
+         type: "varchar",
+         nullable: true
+      },
+      fechaNacimiento: {
+         type: "timestamp",
+         nullable: false
+      },
       email: {
+         type: "varchar",
+         nullable: false
+      },
+      role: {
          type: "varchar",
          nullable: false
       },

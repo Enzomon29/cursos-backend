@@ -9,6 +9,7 @@ app.use(cors())
 app.use(bodyParser.json())
 
 app.use('/cursos',require('./src/cursos/curso.router'))
+app.use('/usuarios',require('./src/users/user.router'))
 
 app.use(handleError.routeError)
 app.use(handleError.genericError)

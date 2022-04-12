@@ -9,24 +9,24 @@ class Cognito {
       this.userPoolId = USER_POOL
    }
    
-   createUser({
+   crearUsuario({
       email,
-      name,
+      nombre,
       id,
-      lastName,
+      apellido
    }) {
       const attributes = [{
          Name: 'name',
-         Value: name
+         Value: nombre
       }, {
          Name: 'email',
          Value: email
       }, {
          Name: 'custom:user_id',
-         Value: id
+         Value: String(id)
       }, {
          Name: 'family_name',
-         Value: lastName
+         Value: apellido
       }, {
          Name: 'email_verified',
          Value: 'true'
@@ -48,7 +48,7 @@ class Cognito {
       })
    }
 
-   addToGroup(email,role) {
+   agregarToGrupo(email,role) {
       const params = {
          UserPoolId: this.userPoolId,
          Username: email,
@@ -66,15 +66,19 @@ class Cognito {
 
    }
 
-   registerUser(paramsToCreate = {
+   async registrarUsuario(paramsToCreate = {
       email,
-      name,
+      nombre,
       id,
-      lastName,
+      apellido,
       role
    }) {
-      const user = await this.createUser({ ...paramsToCreate })
-      await this.addToGroup(email,role)
+      const user = await this.crearUsuario({ ...paramsToCreate })
+      await this.agregarToGrupo(
+         paramsToCreate.email,
+         paramsToCreate.role
+      )
+
       return user
    }
 }

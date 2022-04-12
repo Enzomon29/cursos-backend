@@ -12,7 +12,8 @@ const {
 } = require('../config')
 
 const {
-   CursoEntity
+   CursoEntity,
+   UsuarioEntity
 } = require('../entities')
 
 const connectionOptions = {
@@ -27,7 +28,8 @@ const connectionOptions = {
       castParameters: false,
    },
    entities: [
-      new EntitySchema(CursoEntity)
+      new EntitySchema(CursoEntity),
+      new EntitySchema(UsuarioEntity)
    ],
    username: DATABASE_USERNAME,
    password: DATABASE_PASSWORD,
