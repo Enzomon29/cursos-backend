@@ -7,11 +7,9 @@ module.exports = async (nombre) => {
       const CursoRepository = connection.getRepository(
          EntityNames.CursoEntity
       )
-      const curso = await CursoRepository.save({nombre})
+      const curso = await CursoRepository.save({ nombre })
       return {
-         payload: {
-            ...curso
-         }
+         ...curso
       }
    } catch(error) {
       console.error(error.message,error.stack)

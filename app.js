@@ -3,12 +3,12 @@ const app = require('express')()
 const cors = require('cors')
 const bodyParser = require('body-parser')
 
-const { handleError } = require('./middlewares')
+const { handleError } = require('./src/commons/middlewares')
 
 app.use(cors())
 app.use(bodyParser.json())
 
-app.use('/cursos',require('./server/cursos/curso.router'))
+app.use('/cursos',require('./src/cursos/curso.router'))
 
 app.use(handleError.routeError)
 app.use(handleError.genericError)

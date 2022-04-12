@@ -1,22 +1,23 @@
 const getConnection = require('../../../database')
 const { EntityNames } = require('../../../entities')
 
-module.exports = async (pagina,porPagina) => {
+module.exports = async (id,payload) => {
    try {
       const connection = await getConnection()
       const CursoRepository = connection.getRepository(
          EntityNames.CursoEntity
       )
-      const cursos = await CursoRepository.find({})
-
-      return {
-         payload: {
-            data: cursos.slice(porPagina*(pagina-1),porPagina*pagina),
-            paginaActual: Number(pagina),
-            paginas: Math.ceil(cursos.length / porPagina),
-            total: cursos.length
+      const curso = await CursoRepository.findOne({ id })
+      if(!curso) {
+         return {
+            error: {
+               code: 404,
+               message: 'El curso con id ' + id + ' no existe.'
+            }
          }
       }
+      const datos = { id, ...payload }
+      return await CursoRepository.save(datos)
    } catch(error) {
       console.error(error.message,error.stack)
       return {
