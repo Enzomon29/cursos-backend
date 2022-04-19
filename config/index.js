@@ -5,5 +5,6 @@ module.exports = {
    DATABASE_REGION: process.env.DATABASE_REGION,
    DATABASE_USERNAME: process.env.DATABASE_USERNAME,
    DATABASE_PASSWORD: process.env.DATABASE_PASSWORD,
-   DATABASE_HOST: process.env.DATABASE_HOST
+   DATABASE_HOST: process.env.DATABASE_HOST,
+   USER_POOL: process.env.USER_POOL
 }
