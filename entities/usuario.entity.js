@@ -37,6 +37,10 @@ module.exports = {
       actualizado: {
          type: "timestamp",
          default: () => "CURRENT_TIMESTAMP",
+      },
+      sub: {
+         type: "varchar",
+         nullable: false
       }
    }
 }

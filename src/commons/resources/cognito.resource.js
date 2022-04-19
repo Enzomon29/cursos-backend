@@ -73,13 +73,12 @@ class Cognito {
       apellido,
       role
    }) {
-      const user = await this.crearUsuario({ ...paramsToCreate })
+      const { User } = await this.crearUsuario({ ...paramsToCreate })
       await this.agregarToGrupo(
          paramsToCreate.email,
          paramsToCreate.role
       )
-
-      return user
+      return User.Username
    }
 }
 
