@@ -1,20 +1,32 @@
-service: cursos-api
+service: ${self:custom.name}
 frameworkVersion: '2'
 provider:
    name: aws
    runtime: nodejs14.x
-   stage: dev
-   region: us-east-1
+   stage: DESA
+   region: us-east-2
    apiGateway:
       shouldStartNameWithService: true
-   environment: ${file(env.${self:custom.stage}.json)}
+   environment: ${file(env.${self:custom.fileEnvironment.${opt:stage}}.json)}
    lambdaHashingVersion: 20201221
    timeout: 30
    versionFunctions: false
 
 custom:
    stage: ${opt:stage,self:provider.stage}
+   fileEnvironment:
+     DESA: dev
+     PROD: prod
    region: ${opt:region,self:provider.region}
+   name: API-CURSOS-UNMSM
+   regions:
+     code:
+       DESA: us-east-2
+       PROD: us-east-1
+     abbrev:
+       DESA: UE2
+       PROD: UE1
+     
 
 package:
    individually: true
@@ -28,7 +40,7 @@ package:
 functions:
    app:
       handler: app.handler
-      name: ${self:service}-${self:custom.stage}-app
+      name: ${self:custom.regions.abbrev.${opt:stage}}COM${opt:stage}CURSOS001
       package:
          patterns:
             - '!package-lock.json'
@@ -53,7 +65,7 @@ functions:
 layers:
    Api:
       path: layers/api-layer
-      name: ${self:service}-layer-${self:custom.stage}
+      name: ${self:custom.regions.abbrev.${opt:stage}}COM${opt:stage}LYCURSOS001
       description: Layer para el API
       compatibleRuntimes:
          - nodejs14.x
