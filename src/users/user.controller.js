@@ -3,7 +3,7 @@ const Services = require('./services')
 
 exports.crearUsuario = async (req,res) => {
    const payload = req.body
-   const ans = await Services.crearCurso({...payload})
+   const ans = await Services.crearUsuario({...payload})
    if(ans.error) {
       return response(res,ans.error.code,ans.error.message)
    }
@@ -17,25 +17,6 @@ exports.obtenerCursos = async (req,res) => {
       porPagina = 10
    } = req.query
    const ans = await Services.obtenerCursos(pagina,porPagina)
-   if(ans.error) {
-      return response(res,ans.error.code,ans.error.message)
-   }
-   return response(res,200,ans)
-}
-
-exports.actualizarCurso = async (req,res) => {
-   const id = req.params.id
-   const payload = req.body
-   const ans = await Services.actualizarCurso(id,payload)
-   if(ans.error) {
-      return response(res,ans.error.code,ans.error.message)
-   }
-   return response(res,200,ans)
-}
-
-exports.obtenerCurso = async (req,res) => {
-   const id = req.params.id
-   const ans = await Services.obtenerCurso(id)
    if(ans.error) {
       return response(res,ans.error.code,ans.error.message)
    }

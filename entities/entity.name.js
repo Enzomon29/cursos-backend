@@ -1,4 +1,5 @@
 module.exports = {
    CursoEntity: "Curso",
-   UsuarioEntity: "Usuario"
+   UsuarioEntity: "Usuario",
+   InscripcionEntity: "Inscripcion"
 }

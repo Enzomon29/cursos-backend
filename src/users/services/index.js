@@ -1,4 +1,4 @@
 module.exports = {
-   crearCurso: require('./create.service'),
-   obtenerCursos: require('./obtener.service'),
+   crearUsuario: require('./create.service'),
+   // obtenerCursos: require('./obtener.service'),
 }

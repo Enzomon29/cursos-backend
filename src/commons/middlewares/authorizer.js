@@ -4,8 +4,6 @@ const { response } = require('../utils')
 
 module.exports =  (roles = []) => async (req,res,next) => {
    try {
-      console.log('=> Autorizador')
-
       const connection = await getConnection()
       const UsuarioRepository = connection.getRepository(
          EntityNames.UsuarioEntity
@@ -14,7 +12,8 @@ module.exports =  (roles = []) => async (req,res,next) => {
       const isOffline = process.env.IS_OFFLINE === 'true' ? true : false
 
       if(isOffline) {
-         req.locals = await UsuarioRepository.find({ sub: req.headers.sub })
+         console.log('=> Proceso offline')
+         req.locals = await UsuarioRepository.findOne({ sub: req.headers.sub })
       } else {
          const authProvider = req.requestContext.identity.cognitoAuthenticationProvider
          const parts = authProvider.split(':')

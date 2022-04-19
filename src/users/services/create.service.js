@@ -11,8 +11,8 @@ module.exports = async (payload) => {
          EntityNames.UsuarioEntity
       )
       const usuario = await UsuarioRepository.save(payload)
-      return Cognito.registrarUsuario({ ...usuario })
-         .then(sub => UsuarioRepository.save({ ...payload, sub }))
+      const sub = await Cognito.registrarUsuario({ ...usuario })
+      return await UsuarioRepository.save({ ...payload, sub })
    } catch(error) {
       console.error(error.message,error.stack)
       return {

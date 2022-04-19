@@ -41,6 +41,10 @@ module.exports = {
       sub: {
          type: "varchar",
          nullable: false
+      },
+      saldo: {
+         type: "float",
+         default: 1000
       }
    }
 }

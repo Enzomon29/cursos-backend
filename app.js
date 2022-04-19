@@ -10,6 +10,7 @@ app.use(bodyParser.json())
 
 app.use('/cursos',require('./src/cursos/curso.router'))
 app.use('/usuarios',require('./src/users/user.router'))
+app.use('/inscripcion',require('./src/inscripcion/inscripcion.router'))
 
 app.use(handleError.routeError)
 app.use(handleError.genericError)
