@@ -11,14 +11,16 @@ module.exports =  (roles = []) => async (req,res,next) => {
 
       const isOffline = process.env.IS_OFFLINE === 'true' ? true : false
 
+
       if(isOffline) {
          console.log('=> Proceso offline')
+         // req.locals = await UsuarioRepository.findOne({ sub: req.headers.sub })
          req.locals = await UsuarioRepository.findOne({ sub: req.headers.sub })
       } else {
-         const authProvider = req.requestContext.identity.cognitoAuthenticationProvider
-         const parts = authProvider.split(':')
-         const sub = parts.pop()
-         req.locals = await UsuarioRepository.find({ sub })
+         // const authProvider = req.requestContext.identity.cognitoAuthenticationProvider
+         // const parts = authProvider.split(':')
+         // const sub = parts.pop()
+         req.locals = await UsuarioRepository.findOne({ sub: 'f59b8011-5c54-4ed7-8bdd-aa92302199c8' })
       }
 
       if(!req.locals) {

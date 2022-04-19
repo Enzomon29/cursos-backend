@@ -8,21 +8,6 @@ module.exports = async (usuario) => {
          EntityNames.InscripcionEntity
       )
 
-      /*
-      const query = await InscripcionRepository
-         .createQueryBuilder('compras')
-         .select([
-            'CUR.nombre',
-            'CUR.activo',
-            'CUR.precio',
-            'INS.creado as fechaInscripcion',
-            'INS.monto',
-            'INS.id'
-         ])
-         .innerJoin('compras.curso','curso')
-         .where('compras.userId =: userId', { userId: usuario.id })
-         .getMany()
-         */
       const rawData = await InscripcionRepository.query(`
          SELECT
             CUR.nombre,

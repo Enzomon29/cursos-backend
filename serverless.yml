@@ -52,15 +52,15 @@ functions:
         - http:
             path: /{proxy+}
             method: any
-            cors:
-              origin: '*'
-              headers:
-                - Content-Type
-                - X-Amz-Date
-                - Authorization
-                - X-Amz-Security-Token
-            authorizer:
-              type: aws_iam
+#           cors:
+#             origin: '*'
+#             headers:
+#               - Content-Type
+#               - X-Amz-Date
+#               - Authorization
+#               - X-Amz-Security-Token
+#           authorizer:
+#             type: aws_iam
 
 layers:
    Api:
